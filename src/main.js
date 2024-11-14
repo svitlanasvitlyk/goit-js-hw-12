@@ -82,3 +82,12 @@ async function loadPhotos() {
     });
   }
 }
+
+iziToast.settings({
+  timeout: 10000,
+  position: 'topRight',
+  resetOnHover: true,
+  icon: 'material-icons',
+  transitionIn: 'flipInX',
+  transitionOut: 'flipOutX',
+});
