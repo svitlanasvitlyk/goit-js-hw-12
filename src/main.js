@@ -1,7 +1,7 @@
-import { fetchImages } from './pixabay-api';
-import { renderImages } from './render-functions';
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
+import { fetchPhotos } from './js/pixabay-api';
+import { renderPhotos } from './js/render-functions';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 const fetchSubmit = document.querySelector('.form');
 const searchInput = document.querySelector('.search-input');
