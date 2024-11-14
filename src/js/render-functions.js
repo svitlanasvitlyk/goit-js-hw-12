@@ -3,7 +3,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 let lightbox = null;
 
 export async function renderPhotos(photos) {
-  const photoList = document.querySelector('.gallery-list');
+  const galleryList = document.querySelector('.gallery-list');
 
   const markup = await photos
     .map(photo => {
