@@ -65,7 +65,7 @@ async function loadPhotos() {
     await renderPhotos(photos.hits);
     page++;
 
-    const totalDisplayed = (page - 1) * perPage;
+    const totalDisplayed = (page - 1) * 15 + hits.length;
 
     if (totalDisplayed >= totalHits) {
       loadButton.style.display = 'none';
