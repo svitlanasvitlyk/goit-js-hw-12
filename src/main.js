@@ -65,7 +65,9 @@ async function loadPhotos() {
     await renderPhotos(photos.hits);
     page++;
 
-    if ((page - 1) * perPage + photos.hits.length >= totalHits) {
+    const totalDisplayed = (page - 1) * perPage;
+
+    if (totalDisplayed >= totalHits) {
       loadButton.style.display = 'none';
       iziToast.info({
         title: 'End of results',
