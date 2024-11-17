@@ -17,15 +17,6 @@ let searchRequest = '';
 fetchSubmit.addEventListener('submit', async event => {
   event.preventDefault();
   searchRequest = searchInput.value.trim();
-
-  if (!searchRequest) {
-    iziToast.warning({
-      title: 'Warning',
-      message: 'Please enter a search query.',
-    });
-    return;
-  }
-
   page = 1;
   galleryList.innerHTML = '';
   loadButton.style.display = 'none';
@@ -62,8 +53,7 @@ async function loadPhotos() {
   try {
     const photos = await fetchPhotos(searchParams);
     gallery.style.display = 'none';
-
-    if (!photos || photos.hits.length === 0) {
+    if (photos.hits.length === 0) {
       iziToast.error({
         title: 'Error',
         message: 'No images found. Try again with a different query.',
@@ -75,9 +65,7 @@ async function loadPhotos() {
     await renderPhotos(photos.hits);
     page++;
 
-    const totalDisplayed = (page - 1) * perPage + photos.hits.length;
-
-    if (totalDisplayed >= totalHits) {
+    if ((page - 1) * perPage + photos.hits.length >= totalHits) {
       loadButton.style.display = 'none';
       iziToast.info({
         title: 'End of results',
