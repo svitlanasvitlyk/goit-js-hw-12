@@ -63,10 +63,8 @@ async function loadPhotos() {
 
     totalHits = photos.totalHits;
     await renderPhotos(photos.hits);
-    page++;
 
-    const totalDisplayed = (page - 1) * perPage;
-    if (totalDisplayed >= totalHits) {
+    if ((page - 1) * perPage + photos.hits.length >= totalHits) {
       loadButton.style.display = 'none';
       iziToast.info({
         title: 'End of results',
@@ -75,6 +73,7 @@ async function loadPhotos() {
     } else {
       loadButton.style.display = 'block';
     }
+    page++;
   } catch (error) {
     gallery.style.display = 'none';
     iziToast.error({
